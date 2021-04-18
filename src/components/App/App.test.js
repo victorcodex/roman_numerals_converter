@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
-const assert = require("assert");
 
 describe("App home", () => {
   test('renders Roman numerals converter', () => {
