@@ -34,11 +34,6 @@ const App = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [integerInput]);
 
-  useEffect(() => {
-    console.log("errorMessage ", errorMessage);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [errorMessage]);
-
   return (
     <div className="container">
       <form>
