@@ -6,13 +6,14 @@ import reducer from "./reducer";
 /**
  * Accepts a Roman numeral value and a callback function to receive the result
  * @param {string} romanNumeralValue 
+ * @param {function} setErrorMessage 
  * @param {function} callBackFunction 
  * @return {callBackFunction(convertedValue)}
 */
-const convertRomanNumeralsToInteger = (romanNumeralValue, callBackFunction) => {
+const convertRomanNumeralsToInteger = (romanNumeralValue, setErrorMessage, callBackFunction) => {
 
     if (!romanNumeralValue) {
-        return constantValues.invalidRomanNumerals;
+        return setErrorMessage(constantValues.invalidRomanNumerals);
     }
 
     // convert provided roman numerals to uppercase
@@ -20,8 +21,11 @@ const convertRomanNumeralsToInteger = (romanNumeralValue, callBackFunction) => {
 
     // check if user provided string only
     if (stringOnlyChecker(romanNumeralValue)) {
-        return constantValues.invalidRomanNumerals;
+        return setErrorMessage(constantValues.invalidRomanNumerals);
     }
+
+    // reset error message
+    setErrorMessage("");
     
     // get pattern for rexExp checker. Should return like M|CM|D|CD|C|XC|L|XL|X|IX|V|IV|I
     const regMatchPattern = Object.keys(constantValues.romanFigureData).join("|");
@@ -31,7 +35,7 @@ const convertRomanNumeralsToInteger = (romanNumeralValue, callBackFunction) => {
 
     // Sum the interger equivalent for each interation. E.g "M" => 1000, "CM" => 900, "XC" => 90 i.e 1000 + 900+ 90 = 1990
     const convertedValue = matchedArray.map(integerEquivalent => constantValues.romanFigureData[integerEquivalent]).reduce(reducer);
-    callBackFunction(convertedValue);
+    return callBackFunction(convertedValue);
   };
 
 

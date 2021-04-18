@@ -4,20 +4,24 @@ import numberRangeChecker from "./numberRangeChecker";
 /**
  * Accepts a number and a callback function to receive the result
  * @param {number} num 
+ * @param {function} setErrorMessage 
  * @param {function} callBackFunction 
  * @return {callBackFunction(convertedRomanValue)}
 */
-const convertIntegerToRomanNumerals = (num, callBackFunction) => {
+const convertIntegerToRomanNumerals = (num, setErrorMessage, callBackFunction) => {
     let numberToBeConverted = num;
     let convertedRomanValue = '';
 
     // check if user provided a number
-    if (isNaN(numberToBeConverted)) return constantValues.invalidNumber;
+    if (isNaN(numberToBeConverted)) return setErrorMessage(constantValues.invalidNumber);
 
     // check if the provided number by the user is within a range of 0 - 3999
     if (!numberRangeChecker(numberToBeConverted, constantValues.minValidNumber, constantValues.maxValidNumber)) {
-        return constantValues.invalidRange;
+        return setErrorMessage(constantValues.invalidRange);
     }
+
+    // reset error message
+    setErrorMessage("");
 
     // iterate romanFigureData from left to right  and get the keys|values
     Object.entries(constantValues.romanFigureData).forEach(([key, value]) => {
@@ -30,7 +34,7 @@ const convertIntegerToRomanNumerals = (num, callBackFunction) => {
         }
     });
     // return the current value of convertedRomanValue
-    callBackFunction(convertedRomanValue);
+    return callBackFunction(convertedRomanValue);
   };
 
   export default convertIntegerToRomanNumerals;

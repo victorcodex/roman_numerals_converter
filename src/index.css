@@ -1,5 +1,6 @@
 body{
-  background-color:#6e6969;
+  background-image: linear-gradient(-90deg,#38898C 0%,#051E3A 100%)!important;
+  font-family: Helvetica;
   text-align:center;
 }
 
@@ -8,8 +9,21 @@ body{
   background-color: #fff;
   border-radius: 5px;
   height: auto;
-  padding: 15px 18px;
+  padding: 25px 40px;
   margin: 10% auto;
   margin-left: auto;
   margin-right: auto;
 } 
+
+.container input{
+  padding: 10px;
+  border: 0;
+  box-shadow: -1px 1px 7px 4px rgb(0 0 0 / 6%);
+  border-radius:10px;
+  margin: 10px;
+}
+
+.warning {
+  color: #a75d5d;
+  font-size: 13px;
+}
