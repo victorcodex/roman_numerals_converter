@@ -14,7 +14,7 @@ const App = () => {
   // detect when the number input changes
   useEffect(() => {
     if (romanNumeralsInput) {
-      // if the romanNumeralsInput has a calue call convertRomanNumeralsToInteger with the arguments romanNumeralsInput, setIntegerInput
+      // if the romanNumeralsInput has a value call convertRomanNumeralsToInteger with the arguments romanNumeralsInput, setIntegerInput
       convertRomanNumeralsToInteger(romanNumeralsInput, setErrorMessage, setIntegerInput);
     } else {
       setIntegerInput("");
